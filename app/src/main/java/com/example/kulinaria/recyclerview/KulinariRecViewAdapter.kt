@@ -32,12 +32,12 @@ class KulinariRecViewAdapter(
         holder.titleTextView.text = recepti.saxeli
 
 
-        // Load image with Picasso
+
         Picasso.get()
             .load(recepti.imageUrl)
             .resize(300, 300)
-            .placeholder(R.drawable.ic_launcher_foreground)  // optional placeholder
-            .error(R.drawable.ic_launcher_background)              // optional error image
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.ic_launcher_background)
             .into(holder.imageViewRecepti)
 
 
