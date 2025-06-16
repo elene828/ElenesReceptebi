@@ -3,15 +3,17 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kulinaria.R
-import com.example.kulinaria.models.recepti
+import com.example.kulinaria.models.Recepti
+import com.squareup.picasso.Picasso
 
 class kulinarirecviewadapter(
     private val recyclerViewInterface: kulinarirecviewint,
     private val context: Context,
-    private val destinationModels: ArrayList<recepti>
+    private val destinationModels: ArrayList<Recepti>
 ): RecyclerView.Adapter<kulinarirecviewadapter.MyViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,8 +29,17 @@ class kulinarirecviewadapter(
         position: Int
     ) {
         val recepti = destinationModels[position]
-        holder.titleTextView.text = recepti.title
-        //holder.infoTextView.text = recepti.info
+        holder.titleTextView.text = recepti.saxeli
+
+
+        // Load image with Picasso
+        Picasso.get()
+            .load(recepti.imageUrl)
+            .resize(300, 300)
+            .placeholder(R.drawable.ic_launcher_foreground)  // optional placeholder
+            .error(R.drawable.ic_launcher_background)              // optional error image
+            .into(holder.imageViewRecepti)
+
 
         holder.bind(recepti)
     }
@@ -43,7 +54,8 @@ class kulinarirecviewadapter(
     ) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.textView4)
         val infoTextView: TextView = itemView.findViewById(R.id.textView5)
-        fun bind(recepti: recepti) {
+        val imageViewRecepti = itemView.findViewById<ImageView>(R.id.imageView2)
+        fun bind(recepti: Recepti) {
             itemView.setOnClickListener {
                 recyclerInterface.onClick(recepti)
             }

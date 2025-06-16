@@ -5,10 +5,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object rec {
+object Rec {
     private lateinit var okHttpClient: OkHttpClient
     private lateinit var retrofit: Retrofit
-    private lateinit var receptapi: receptapi
+    private lateinit var receptap: Recept_api
 
     private val loggingInterceptor = HttpLoggingInterceptor()
 
@@ -24,18 +24,18 @@ object rec {
 
 
         retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/LukaLominadze/GameDrive/api/api/")
+            .baseUrl("https://raw.githubusercontent.com/elene828/ElenesReceptebi/main/app/src/main/res/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        receptapi = retrofit.create(receptapi::class.java)
+        receptap = retrofit.create(Recept_api::class.java)
     }
 
-    fun getrecepti(): receptapi {
-        if (!::receptapi.isInitialized) {
+    fun getrecepti(): Recept_api {
+        if (!::receptap.isInitialized) {
             throw IllegalStateException("RestClient not initialized. Call RestClient.init() first.")
         }
-        return receptapi
+        return receptap
     }
 }
