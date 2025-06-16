@@ -10,11 +10,11 @@ import com.example.kulinaria.R
 import com.example.kulinaria.models.Recepti
 import com.squareup.picasso.Picasso
 
-class kulinarirecviewadapter(
-    private val recyclerViewInterface: kulinarirecviewint,
+class KulinariRecViewAdapter(
+    private val recyclerViewInterface: KulinariRecViewInt,
     private val context: Context,
     private val destinationModels: ArrayList<Recepti>
-): RecyclerView.Adapter<kulinarirecviewadapter.MyViewHolder>() {
+): RecyclerView.Adapter<KulinariRecViewAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -50,7 +50,7 @@ class kulinarirecviewadapter(
 
     class MyViewHolder(
         itemView: View,
-        private val recyclerInterface: kulinarirecviewint
+        private val recyclerInterface: KulinariRecViewInt
     ) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.textView4)
         val infoTextView: TextView = itemView.findViewById(R.id.textView5)

@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kulinaria.appi.Rec
 import com.example.kulinaria.databinding.ActivityMainBinding
 import com.example.kulinaria.models.Recepti
-import com.example.kulinaria.recyclerview.kulinarirecviewadapter
-import com.example.kulinaria.recyclerview.kulinarirecviewint
+import com.example.kulinaria.recyclerview.KulinariRecViewAdapter
+import com.example.kulinaria.recyclerview.KulinariRecViewInt
 import kotlinx.coroutines.launch
 import okio.IOException
 import retrofit2.HttpException
 
-class MainActivity : AppCompatActivity(), kulinarirecviewint {
+class MainActivity : AppCompatActivity(), KulinariRecViewInt {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter:kulinarirecviewadapter
+    private lateinit var adapter:KulinariRecViewAdapter
     private var receptidata: ArrayList<Recepti> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), kulinarirecviewint {
                 val response = Rec.getrecepti().getrecepti()
                 receptidata = response.body() as ArrayList<Recepti>
 
-                adapter = kulinarirecviewadapter(
+                adapter = KulinariRecViewAdapter(
                     this@MainActivity, this@MainActivity, receptidata)
 
                 binding.recycleview.adapter = adapter
